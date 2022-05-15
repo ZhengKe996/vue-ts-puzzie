@@ -38,7 +38,7 @@
 <script lang="ts" setup>
 import { computed, ref, nextTick } from "vue";
 import Images from "@/assets/images/img.jpg";
-// import { SinglePuzzle } from "./puzzle";
+
 import SinglePuzzle from "@/component/SinglePuzzle";
 
 const props = defineProps<{

@@ -1,11 +1,8 @@
 <template>
   <Background />
   <Controls
-    :h-size="hSize"
-    :v-size="vSize"
     :move-count="moveCount"
     :time="time"
-    @update:size="updateSize"
     @shuffle-puzzle="shuffleUserPuzzle"
   />
 

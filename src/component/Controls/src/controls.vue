@@ -1,70 +1,31 @@
 <template>
   <div id="controls">
     <div class="controls__stats">
-      <div>Moves:</div>
+      <div>步数:</div>
       <div class="controls__stats__value">{{ moveCount }}</div>
       <div />
-      <div>Time:</div>
+      <div>用时:</div>
       <div class="controls__stats__value">{{ `${time}s` }}</div>
     </div>
 
-    <!-- <div class="controls__options">
-      <div class="controls__options__size">
-        <input
-          v-model="tmpHSize"
-          class="controls__options__size__input"
-          type="number"
-        />
-        <div>x</div>
-        <input
-          v-model="tmpVSize"
-          class="controls__options__size__input"
-          type="number"
-        />
-        <b-btn class="controls__options__btn" @click="updateSize">
-          Update size
-        </b-btn>
-      </div>
-
-      <b-btn class="controls__options__btn" @click="shuffle"> Shuffle </b-btn>
-    </div> -->
+    <div class="controls__options">
+      <TheRefresh @refresh="refresh"></TheRefresh>
+    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue";
-
+import TheRefresh from "@/component/TheRefresh";
 const props = defineProps<{
-  hSize: number;
-  vSize: number;
   moveCount: number;
   time: number;
 }>();
 
 const emit = defineEmits<{
-  (e: "update:size", payload: { h: number; v: number }): void;
   (e: "shuffle-puzzle"): void;
 }>();
 
-const tmpHSize = ref(props.hSize);
-const tmpVSize = ref(props.vSize);
-
-const validateSizeValue = (value: number) =>
-  value > 1 && value < 10 && !(value % 1);
-
-const validateTmpSize = () =>
-  validateSizeValue(tmpHSize.value) && validateSizeValue(tmpVSize.value);
-
-const updateSize = () => {
-  if (validateTmpSize() && tmpHSize.value * tmpVSize.value > 4) {
-    emit("update:size", { h: tmpHSize.value, v: tmpVSize.value });
-  } else {
-    tmpHSize.value = props.hSize;
-    tmpVSize.value = props.vSize;
-  }
-};
-
-const shuffle = () => {
+const refresh = () => {
   emit("shuffle-puzzle");
 };
 </script>
