@@ -9,17 +9,15 @@
 
 <script setup lang="ts">
 import { ref, nextTick } from "vue";
-import GameBG from "@/assets/images/game-bg.jpg";
-
-const img = new URL(GameBG, import.meta.url).href;
+import { gameBg } from "@/config";
 
 const bgImg = ref<string | null>(null);
 (() => {
   const imgLoader = new Image();
-  imgLoader.src = img;
+  imgLoader.src = gameBg;
   imgLoader.onload = async () => {
     await nextTick();
-    bgImg.value = `url(${img})`;
+    bgImg.value = `url(${gameBg})`;
   };
 })();
 </script>

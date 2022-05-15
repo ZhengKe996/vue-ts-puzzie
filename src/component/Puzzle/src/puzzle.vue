@@ -6,7 +6,7 @@
       class="puzzle__container"
       :class="!isImgLoaded && 'puzzle__container--hidden'"
     >
-      <img class="puzzle__container__img" :src="Images" />
+      <img class="puzzle__container__img" :src="gamePage[0]" />
 
       <div class="puzzle__container__playground">
         <transition-group name="puzzle__container__playground__transition">
@@ -14,7 +14,7 @@
             v-for="(item, index) in userPuzzleItems"
             :key="item.id"
             v-bind="item"
-            :Images="Images"
+            :Images="gamePage[0]"
             @click="handlePuzzleClick(index)"
           />
         </transition-group>
@@ -28,7 +28,7 @@
           v-show="arePuzzleOrderedCorrectly"
           class="puzzle__container__cover"
         >
-          <img class="puzzle__container__cover__img" :src="Images" />
+          <img class="puzzle__container__cover__img" :src="gamePage[0]" />
         </div>
       </transition>
     </div>
@@ -37,7 +37,7 @@
 
 <script lang="ts" setup>
 import { computed, ref, nextTick } from "vue";
-import Images from "@/assets/images/img.jpg";
+import { gamePage } from "@/config";
 
 import SinglePuzzle from "@/component/SinglePuzzle";
 
@@ -54,7 +54,7 @@ const props = defineProps<{
 const isImgLoaded = ref(false);
 (() => {
   const imgLoader = new Image();
-  imgLoader.src = Images;
+  imgLoader.src = gamePage[0];
   imgLoader.onload = async () => {
     await nextTick();
     isImgLoaded.value = true;
