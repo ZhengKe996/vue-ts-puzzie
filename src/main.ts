@@ -3,8 +3,7 @@ import App from "./App.vue";
 
 import router from "./router";
 import "normalize.css";
-import "@/assets/less/index.less";
-
+import "@/assets/scss/index.scss";
 const app = createApp(App);
 app.use(router);
 app.mount("#app");

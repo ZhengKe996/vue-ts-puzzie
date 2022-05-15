@@ -18,6 +18,11 @@ const routes: RouteRecordRaw[] = [
     component: () => import("@/views/Game"),
   },
   {
+    path: "/game-over",
+    name: "game-over",
+    component: () => import("@/views/GameOver"),
+  },
+  {
     path: "/:pathMatch(.*)*",
     name: "mian",
     component: () => import("@/views/Main/index"),
