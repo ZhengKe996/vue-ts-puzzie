@@ -20,12 +20,12 @@
 
 <script setup lang="ts">
 import { computed, reactive, ref, watch } from "vue";
+import { useRouter } from "vue-router";
 import Footer from "@/component/Footer";
 import Background from "@/component/Background";
 import Puzzle from "@/component/Puzzle";
 import Controls from "@/component/Controls";
 
-import { useRouter } from "vue-router";
 const router = useRouter();
 
 const go = () => {

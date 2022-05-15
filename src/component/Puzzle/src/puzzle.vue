@@ -6,7 +6,7 @@
       class="puzzle__container"
       :class="!isImgLoaded && 'puzzle__container--hidden'"
     >
-      <img class="puzzle__container__img" :src="img" />
+      <img class="puzzle__container__img" :src="Images" />
 
       <div class="puzzle__container__playground">
         <transition-group name="puzzle__container__playground__transition">
@@ -28,7 +28,7 @@
           v-show="arePuzzleOrderedCorrectly"
           class="puzzle__container__cover"
         >
-          <img class="puzzle__container__cover__img" :src="img" />
+          <img class="puzzle__container__cover__img" :src="Images" />
         </div>
       </transition>
     </div>
@@ -49,12 +49,12 @@ const props = defineProps<{
   userPuzzle: number[];
 }>();
 
-const img = new URL(Images, import.meta.url).href;
+// const img = new URL(Images, import.meta.url).href;
 
 const isImgLoaded = ref(false);
 (() => {
   const imgLoader = new Image();
-  imgLoader.src = img;
+  imgLoader.src = Images;
   imgLoader.onload = async () => {
     await nextTick();
     isImgLoaded.value = true;
