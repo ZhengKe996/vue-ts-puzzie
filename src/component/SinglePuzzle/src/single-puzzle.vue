@@ -22,7 +22,7 @@ const props = defineProps<{
 const bgImg = ref("");
 
 onMounted(() => {
-  bgImg.value = `url(${props.Images})`;
+  bgImg.value = `${props.Images}`;
 });
 </script>
 
