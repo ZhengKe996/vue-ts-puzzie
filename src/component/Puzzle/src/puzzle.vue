@@ -46,7 +46,7 @@ const props = defineProps<{
   arePuzzleOrderedCorrectly: boolean;
   basePuzzle: number[];
   userPuzzle: number[];
-  gamePage: any;
+  gamePage: string;
 }>();
 
 const isImgLoaded = ref(false);
