@@ -14,7 +14,7 @@
     :base-puzzle="basePuzzle"
     :user-puzzle="userPuzzle"
     @swap-user-puzzle="swapUserPuzzle"
-    :game-page="gamePage"
+    :game-page="gamePage[checkpoint]"
   />
 
   <Footer />
@@ -38,14 +38,13 @@ const go = () => {
     params: {
       time: time.value,
       moveCount: moveCount.value,
-      hSize: route.params.vSize,
-      vSize: route.params.vSize,
+      checkpoint: checkpoint.value,
     },
   });
 };
 const hSize = ref(Number(route.params.hSize));
 const vSize = ref(Number(route.params.vSize));
-
+const checkpoint = ref(Number(route.params.checkpoint));
 const basePuzzle = computed(() =>
   Array.from({ length: hSize.value * vSize.value }, (_, i) => i)
 );
