@@ -11,6 +11,7 @@
 </template>
 
 <script lang="ts" setup>
+import { ref } from "vue";
 const props = defineProps<{
   canMove?: boolean;
   isBlank?: boolean;
@@ -18,7 +19,7 @@ const props = defineProps<{
   Images: string;
 }>();
 
-const bgImg = `url(${new URL(props.Images, import.meta.url).href})`;
+const bgImg = ref(`url(${new URL(props.Images, import.meta.url).href})`);
 </script>
 
 <style lang="scss" scoped>

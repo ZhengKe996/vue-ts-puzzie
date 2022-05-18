@@ -37,7 +37,6 @@
 
 <script lang="ts" setup>
 import { computed, ref, nextTick } from "vue";
-import { gamePage } from "@/config";
 
 import SinglePuzzle from "@/component/SinglePuzzle";
 
@@ -47,14 +46,13 @@ const props = defineProps<{
   arePuzzleOrderedCorrectly: boolean;
   basePuzzle: number[];
   userPuzzle: number[];
+  gamePage: any[];
 }>();
-
-// const img = new URL(Images, import.meta.url).href;
 
 const isImgLoaded = ref(false);
 (() => {
   const imgLoader = new Image();
-  imgLoader.src = gamePage[0];
+  imgLoader.src = props.gamePage[0];
   imgLoader.onload = async () => {
     await nextTick();
     isImgLoaded.value = true;

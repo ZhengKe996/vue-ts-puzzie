@@ -14,6 +14,7 @@
     :base-puzzle="basePuzzle"
     :user-puzzle="userPuzzle"
     @swap-user-puzzle="swapUserPuzzle"
+    :game-page="gamePage"
   />
 
   <Footer />
@@ -22,6 +23,7 @@
 <script setup lang="ts">
 import { computed, reactive, ref, watch } from "vue";
 import { useRouter, useRoute } from "vue-router";
+import { gamePage } from "@/config";
 import Footer from "@/component/Footer";
 import Background from "@/component/Background";
 import Puzzle from "@/component/Puzzle";
