@@ -17,7 +17,7 @@ const bgImg = ref<string | null>(null);
   imgLoader.src = gameBg;
   imgLoader.onload = async () => {
     await nextTick();
-    bgImg.value = `url(${gameBg})`;
+    bgImg.value = `${gameBg}`;
   };
 })();
 </script>
