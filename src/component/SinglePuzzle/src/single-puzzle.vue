@@ -11,7 +11,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 const props = defineProps<{
   canMove?: boolean;
   isBlank?: boolean;
@@ -19,11 +19,11 @@ const props = defineProps<{
   Images: string;
 }>();
 
-console.log(import.meta.url, "====", props.Images);
+const bgImg = ref("");
 
-const bgImg = ref(`url(${new URL(props.Images, import.meta.url)})`);
-
-console.log(bgImg.value);
+onMounted(() => {
+  bgImg.value = `url(${props.Images})`;
+});
 </script>
 
 <style lang="scss" scoped>
