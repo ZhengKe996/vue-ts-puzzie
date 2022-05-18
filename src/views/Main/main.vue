@@ -1,7 +1,9 @@
 <template>
   <div class="box">
     main
-    <button @click="go">click</button>
+    <button @click="go(3, 3)">初级</button>
+    <button @click="go(4, 4)">中级</button>
+    <button @click="go(5, 5)">高级</button>
   </div>
 </template>
 
@@ -9,8 +11,14 @@
 import { useRouter } from "vue-router";
 const router = useRouter();
 
-const go = () => {
-  router.push("/game");
+const go = (vSize: number, hSize: number) => {
+  router.push({
+    name: "game",
+    params: {
+      vSize,
+      hSize,
+    },
+  });
 };
 </script>
 

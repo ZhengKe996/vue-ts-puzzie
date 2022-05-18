@@ -1,5 +1,6 @@
 <template>
   <Background />
+
   <Controls
     :move-count="moveCount"
     :time="time"
@@ -15,17 +16,18 @@
     @swap-user-puzzle="swapUserPuzzle"
   />
 
-  <Footer></Footer>
+  <Footer />
 </template>
 
 <script setup lang="ts">
 import { computed, reactive, ref, watch } from "vue";
-import { useRouter } from "vue-router";
+import { useRouter, useRoute } from "vue-router";
 import Footer from "@/component/Footer";
 import Background from "@/component/Background";
 import Puzzle from "@/component/Puzzle";
 import Controls from "@/component/Controls";
 
+const route = useRoute();
 const router = useRouter();
 
 const go = () => {
@@ -34,16 +36,13 @@ const go = () => {
     params: {
       time: time.value,
       moveCount: moveCount.value,
+      hSize: route.params.vSize,
+      vSize: route.params.vSize,
     },
   });
 };
-const hSize = ref(3);
-const vSize = ref(3);
-
-const updateSize = ({ h, v }: { h: number; v: number }) => {
-  hSize.value = h;
-  vSize.value = v;
-};
+const hSize = ref(Number(route.params.hSize));
+const vSize = ref(Number(route.params.vSize));
 
 const basePuzzle = computed(() =>
   Array.from({ length: hSize.value * vSize.value }, (_, i) => i)
