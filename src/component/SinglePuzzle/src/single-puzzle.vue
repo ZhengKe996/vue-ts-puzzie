@@ -20,6 +20,8 @@ const props = defineProps<{
 }>();
 
 const bgImg = ref(`url(${new URL(props.Images, import.meta.url).href})`);
+
+console.log(import.meta.url, "====", props.Images, "=====", bgImg.value);
 </script>
 
 <style lang="scss" scoped>
