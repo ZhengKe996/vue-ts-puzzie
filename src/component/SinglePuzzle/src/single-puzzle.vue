@@ -11,7 +11,8 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref } from "vue";
+import { ref, nextTick } from "vue";
+
 const props = defineProps<{
   canMove?: boolean;
   isBlank?: boolean;
@@ -19,11 +20,15 @@ const props = defineProps<{
   Images: string;
 }>();
 
-const bgImg = ref("");
-
-onMounted(() => {
-  bgImg.value = `${props.Images}`;
-});
+const bgImg = ref<string | null>(null);
+(() => {
+  const imgLoader = new Image();
+  imgLoader.src = props.Images;
+  imgLoader.onload = async () => {
+    await nextTick();
+    bgImg.value = `url(${props.Images})`;
+  };
+})();
 </script>
 
 <style lang="scss" scoped>
