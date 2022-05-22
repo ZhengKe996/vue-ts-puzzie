@@ -21,13 +21,22 @@
 </template>
 
 <script setup lang="ts">
-import { computed, reactive, ref, watch } from "vue";
+import { computed, reactive, ref, watch, onMounted } from "vue";
 import { useRouter, useRoute } from "vue-router";
+import { ElMessage } from "element-plus";
 import { gamePage } from "@/config";
 import Footer from "@/component/Footer";
 import Background from "@/component/Background";
 import Puzzle from "@/component/Puzzle";
 import Controls from "@/component/Controls";
+
+onMounted(() => {
+  ElMessage({
+    message: "拼图小游戏点击格子即可开始游戏",
+    center: true,
+    type: "success",
+  });
+});
 
 const route = useRoute();
 const router = useRouter();
