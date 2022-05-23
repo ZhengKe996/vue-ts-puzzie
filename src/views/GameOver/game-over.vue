@@ -24,7 +24,7 @@ const route = useRoute();
 .box {
   width: 100vw;
   height: 100vh;
-  background-image: url("@/assets/images/game-over-bg.jpg");
+  background-image: url("@/assets/images/game-over-bg.png");
   background-repeat: no-repeat;
   background-size: 100vw 100vh;
   overflow: hidden;
